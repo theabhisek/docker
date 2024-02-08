@@ -5,11 +5,17 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { configValidationSchema } from './config.schema';
+console.log(process.env.DB_USERNAME)
+console.log(process.env.DB_PASSWORD)
+console.log(process.env.DB_DATABASE)
+console.log(process.env.NODE_ENV)
+console.log(process.env.DB_PORT)
+console.log(process.env.DATABASE_URL)
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: [`stage.${process.env.STAGE}.env`],
+      envFilePath: [`${process.env.STAGE}.env`],
       validationSchema: configValidationSchema,
     }),
     TypeOrmModule.forRootAsync({
